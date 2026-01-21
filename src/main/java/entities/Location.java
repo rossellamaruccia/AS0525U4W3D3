@@ -24,7 +24,7 @@ public class Location {
     public Location() {
     }
 
-    public Location(String nome, String città) {
+    public Location(String nome, String citta) {
         this.nome = nome;
         this.citta = citta;
     }

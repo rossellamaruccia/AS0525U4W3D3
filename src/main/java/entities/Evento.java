@@ -3,6 +3,8 @@ package entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Eventi")
@@ -33,6 +35,9 @@ public class Evento {
             inverseJoinColumns = @JoinColumn(name = "location_id"))
     @Column(name = "location", nullable = false)
     private String location;
+
+    @OneToMany(mappedBy = "evento")
+    private List<Partecipazione> partecipazioni = new ArrayList<>();
 
     public Evento() {
     }
@@ -96,6 +101,10 @@ public class Evento {
 
     public void setNumero_max_partecipanti(int numero_max_partecipanti) {
         this.numero_max_partecipanti = numero_max_partecipanti;
+    }
+
+    public List<Partecipazione> getPartecipazioni() {
+        return partecipazioni;
     }
 
     @Override
