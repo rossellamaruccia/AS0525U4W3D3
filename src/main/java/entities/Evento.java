@@ -29,12 +29,9 @@ public class Evento {
     @Column(name = "numero_max_partecipanti", nullable = false)
     private int numero_max_partecipanti;
 
-    @ManyToMany
-    @JoinTable(name = "location_id",
-            joinColumns = @JoinColumn(name = "titolo"),
-            inverseJoinColumns = @JoinColumn(name = "location_id"))
-    @Column(name = "location", nullable = false)
-    private String location;
+    @ManyToOne
+    @JoinColumn(name = "location")
+    private Location location;
 
     @OneToMany(mappedBy = "evento")
     private List<Partecipazione> partecipazioni = new ArrayList<>();
@@ -42,7 +39,7 @@ public class Evento {
     public Evento() {
     }
 
-    public Evento(String titolo, String descrizione, tipoEvento tipo_evento, int numero_max_partecipanti, String location) {
+    public Evento(String titolo, String descrizione, tipoEvento tipo_evento, int numero_max_partecipanti, Location location) {
         this.titolo = titolo;
         this.data_evento = LocalDate.of(2026, 1, 20);
         this.descrizione = descrizione;
@@ -71,11 +68,11 @@ public class Evento {
         this.descrizione = descrizione;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(String new_location) {
+    public void setLocation(Location new_location) {
         this.location = new_location;
     }
 

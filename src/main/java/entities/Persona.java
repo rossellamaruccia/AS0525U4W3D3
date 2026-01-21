@@ -31,11 +31,11 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String nome, String cognome, String email, int dd, int mm, int yyyy, sesso sesso) {
+    public Persona(String nome, String cognome, String email, int yyyy, int mm, int dd, sesso sesso) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
-        this.data_nascita = LocalDate.of(dd, mm, yyyy);
+        this.data_nascita = LocalDate.of(yyyy, mm, dd);
         this.sesso = sesso;
     }
 

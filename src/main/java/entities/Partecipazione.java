@@ -10,7 +10,7 @@ public class Partecipazione {
     private long partecipazione_id;
 
     @ManyToOne
-    @JoinColumn(name = "persona_id")
+    @JoinColumn(name = "nome")
     private Persona persona;
 
     @ManyToOne

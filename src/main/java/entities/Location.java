@@ -18,7 +18,7 @@ public class Location {
     @Column(name = "città", nullable = false, columnDefinition = "TEXT")
     private String citta;
 
-    @ManyToMany(mappedBy = "Location")
+    @OneToMany(mappedBy = "location")
     private List<Evento> eventi = new ArrayList<>();
 
     public Location() {
