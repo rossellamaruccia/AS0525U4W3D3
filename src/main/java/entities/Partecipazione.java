@@ -20,6 +20,11 @@ public class Partecipazione {
     public Partecipazione() {
     }
 
+    public Partecipazione(Persona persona, Evento evento) {
+        this.persona = persona;
+        this.evento = evento;
+    }
+
     public long getPartecipazione_id() {
         return partecipazione_id;
     }
