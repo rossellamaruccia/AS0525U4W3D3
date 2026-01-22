@@ -8,6 +8,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "Eventi")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@NamedQuery(name = "findAllEvents", query = "SELECT e FROM Event e")
+
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

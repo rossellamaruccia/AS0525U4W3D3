@@ -1,9 +1,13 @@
 package DAO;
 
+import entities.Concerto;
 import entities.Evento;
+import entities.Genere;
 import exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+
+import java.util.List;
 
 public class EventiDAO {
     private final EntityManager entityManager;
@@ -32,4 +36,14 @@ public class EventiDAO {
         entityManager.remove(found);
         transaction.commit();
     }
+
+    public List<Concerto> getConcertiInStreaming(boolean bool) {
+        TypedQuery<Concerto> query = entityManager.createQuery("SELECT e FROM Evento e WHERE LOWER(e.in_streaming) LIKE LOWER(bool), Concerto.class);
+    }
+
+    public void getConcertiPerGenere(Genere genere) {
+
+    }
+
+
 }
