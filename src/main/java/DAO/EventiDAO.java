@@ -6,6 +6,7 @@ import entities.Genere;
 import exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
@@ -37,13 +38,15 @@ public class EventiDAO {
         transaction.commit();
     }
 
-    public List<Concerto> getConcertiInStreaming(boolean bool) {
-        TypedQuery<Concerto> query = entityManager.createQuery("SELECT e FROM Evento e WHERE LOWER(e.in_streaming) LIKE LOWER(bool), Concerto.class);
+    public List<Concerto> getConcertiInStreaming(boolean streaming) {
+        TypedQuery<Concerto> query = entityManager.createQuery("SELECT concerto FROM Concerto concerto WHERE concerto.in_streaming = :isStreaming", Concerto.class);
+        query.setParameter("isStreaming", streaming);
+        return query.getResultList();
     }
 
-    public void getConcertiPerGenere(Genere genere) {
-
+    public List<Concerto> getConcertiPerGenere(Genere genere) {
+        TypedQuery<Concerto> query = entityManager.createQuery("SELECT concerto FROM Concerto concerto WHERE concerto.genere = :genere", Concerto.class);
+        query.setParameter("genere", genere);
+        return query.getResultList();
     }
-
-
 }
